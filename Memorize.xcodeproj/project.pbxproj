@@ -11,6 +11,7 @@
 		A5AB0382265732B100D4A9F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AB0381265732B100D4A9F5 /* ContentView.swift */; };
 		A5AB0384265732B200D4A9F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AB0383265732B200D4A9F5 /* Assets.xcassets */; };
 		A5AB0387265732B200D4A9F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AB0386265732B200D4A9F5 /* Preview Assets.xcassets */; };
+		A5AB0391265755B100D4A9F5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AB0390265755B100D4A9F5 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		A5AB0383265732B200D4A9F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5AB0386265732B200D4A9F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A5AB0388265732B200D4A9F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5AB0390265755B100D4A9F5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				A5AB037F265732B100D4A9F5 /* MemorizeApp.swift */,
-				A5AB0381265732B100D4A9F5 /* ContentView.swift */,
+				A5AB038F2657559900D4A9F5 /* View */,
 				A5AB0383265732B200D4A9F5 /* Assets.xcassets */,
 				A5AB0388265732B200D4A9F5 /* Info.plist */,
 				A5AB0385265732B200D4A9F5 /* Preview Content */,
@@ -67,6 +69,15 @@
 				A5AB0386265732B200D4A9F5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A5AB038F2657559900D4A9F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5AB0381265732B100D4A9F5 /* ContentView.swift */,
+				A5AB0390265755B100D4A9F5 /* CardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5AB0382265732B100D4A9F5 /* ContentView.swift in Sources */,
+				A5AB0391265755B100D4A9F5 /* CardView.swift in Sources */,
 				A5AB0380265732B100D4A9F5 /* MemorizeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
