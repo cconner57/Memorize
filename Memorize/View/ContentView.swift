@@ -1,84 +1,48 @@
 import SwiftUI
 
 struct ContentView: View {
-	var fruits = ["🍎","🍐","🍊","🍓","🍉","🫐","🍒","🍑","🥭","🍍","🥝"]
-	var animals = ["🦆","🦉","🐢","🐍","🐊","🦭","🦓","🦍","🐘","🐪","🦘"]
-	var vehicles = ["🚗","🚓","🚑","🛻","🚜","🚀","🛸","🚁","⛵️","🚒","🛵"]
-	
-	@State var category = "fruits"
+	@ObservedObject var viewModel: EmojiMemoryGame
 	
 	var body: some View {
-		VStack {
-			Text("Memorize!")
-				.font(.largeTitle)
-			ScrollView {
-				LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))], content: {
-					switch category {
-					case "fruits":
-						let shuffleArray = fruits.shuffled()
-						ForEach(shuffleArray, id: \.self) { fruit in
-							CardView(fruit: fruit)
+		ScrollView {
+			LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
+				ForEach(viewModel.cards) { card in
+					CardView(card: card)
+						.aspectRatio(2/3, contentMode: .fit)
+						.onTapGesture {
+							viewModel.choose(card)
 						}
-					case "animals":
-						let shuffleArray = animals.shuffled()
-						ForEach(shuffleArray, id: \.self) { fruit in
-							CardView(fruit: fruit)
-						}
-					default:
-						let shuffleArray = vehicles.shuffled()
-						ForEach(shuffleArray, id: \.self) { fruit in
-							CardView(fruit: fruit)
-						}
-					}
-				})
-				.padding(.horizontal)
-			}
-			HStack(alignment: .center) {
-				Spacer()
-				fruitCategory
-				Spacer()
-				animalCategory
-				Spacer()
-				vehicleCategory
-				Spacer()
+				}
 			}
 		}
+		.foregroundColor(.red)
+		.padding(.horizontal)
 	}
-	var fruitCategory: some View {
-		Button(action: {category = "fruits"}, label: {
-			VStack {
-				Image(systemName: "applelogo")
-					.font(.title)
-				Text("Fruit")
-					.font(.subheadline)
+}
+
+struct CardView: View {
+	let card: MemoryGame<String>.Card
+	
+	var body: some View {
+		ZStack {
+			let shape = RoundedRectangle(cornerRadius: 20)
+			if card.isFaceUp {
+				shape.fill().foregroundColor(.white)
+				shape.strokeBorder(lineWidth: 3)
+				Text(card.content).font(.largeTitle)
+			} else if card.isMatched {
+				shape.opacity(0)
+			} else {
+				shape.fill()
 			}
-		})
-	}
-	var animalCategory: some View {
-		Button(action: {category = "animals"}, label: {
-			VStack {
-				Image(systemName: "hare")
-					.font(.title)
-				Text("Animals")
-					.font(.subheadline)
-			}
-		})
-	}
-	var vehicleCategory: some View {
-		Button(action: {category = "vehicles"}, label: {
-			VStack {
-				Image(systemName: "car")
-					.font(.title)
-				Text("Vehicles")
-					.font(.subheadline)
-			}
-		})
+		}
 	}
 }
 
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView()
+		let game = EmojiMemoryGame()
+		ContentView(viewModel: game)
 	}
 }
